@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            cursor: no-drop
+        }
+
+        .colors {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 300px;
+            padding: 10px;
+        }
+
+        .color {
+            height: 20px;
+            width: 20px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 320px) {
+            .colors {
+                width: auto;
+                height: 300px;
+                max-height: 100%;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="colors">
+        <div class="color" style="background-color: #000"></div>
+        <div class="color" style="background-color: #fff"></div>
+        <div class="color" style="background-color: #f00"></div>
+        <div class="color" style="background-color: #0f0"></div>
+        <div class="color" style="background-color: #00f"></div>
+        <div class="color" style="background-color: #ff0"></div>
+        <div class="color" style="background-color: #0ff"></div>
+        <div class="color" style="background-color: #f0f"></div>
+    </div>
+
+    <script>
+        const colors = document.querySelectorAll('.color');
+
+        colors.forEach(function(color) {
+            color.addEventListener('click', function(event) {
+                event.stopPropagation();
+                document.body.style.backgroundColor = this.style.backgroundColor;
+            });
+        });
+
+
+        document.body.addEventListener('click', function() {
+            this.style.backgroundColor = '#fff';
+        });
+    </script>
+</body>
+
+</html>
